@@ -55,4 +55,10 @@ class BankApp:
             return amount
         except ValueError:
             messagebox.showerror("Invalid Input")
-            return None                     
+            return None
+
+    def update_display(self, message):
+        self.balance_label.config(text=f"Balance: ₱{self.balance}")
+        self.history.append(message)
+        self.history_box.insert(tk.END, message + "\n")
+        self.amount_entry.delete(0, tk.END)                         
