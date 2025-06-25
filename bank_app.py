@@ -36,4 +36,13 @@ class BankApp:
         amount = self.get_amount()
         if amount:
             self.balance += amount
-            self.update_display(f"Deposited ₱{amount}")    
+            self.update_display(f"Deposited ₱{amount}")
+
+    def withdraw(self):
+        amount = self.get_amount()
+        if amount:
+            if self.balance >= amount:
+                self.balance -= amount
+                self.update_display(f"Withdrew ₱{amount}")
+            else:
+                messagebox.showwarning("Insufficient Funds")            
