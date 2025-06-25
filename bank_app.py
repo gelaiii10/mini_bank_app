@@ -12,7 +12,7 @@ class BankApp:
         self.history = []
 
         root.title("Mini Bank Account")
-        root.geometry("600x500")
+        root.geometry("600x400")
 
         self.balance_label = tk.Label(root, text=f"Balance: ₱{self.balance}", font = ("Avenir", 14))
         self.balance_label.pack(pady = 10)
@@ -29,7 +29,7 @@ class BankApp:
         self.history_label = tk.Label(root, text= "Transaction History", font = ("Avenir", 10, "bold"))
         self.history_label.pack(pady = 10)
 
-        self.history_box = tk.Text(root, height = 6, width = 40)
+        self.history_box = tk.Text(root, height = 10, width = 40)
         self.history_box.pack()
 
     def deposit(self):
@@ -61,4 +61,32 @@ class BankApp:
         self.balance_label.config(text=f"Balance: ₱{self.balance}")
         self.history.append(message)
         self.history_box.insert(tk.END, message + "\n")
-        self.amount_entry.delete(0, tk.END)                         
+        self.amount_entry.delete(0, tk.END) 
+
+# login window
+def show_login():
+    login_window = tk.Tk()
+    login_window.title("Login")
+    login_window.geometry("400x200")
+
+    tk.Label(login_window, text="Username:").pack(pady = 5)
+    username_entry = tk.Entry(login_window)
+    username_entry.pack()
+
+    tk.Label(login_window, text="Password:").pack(pady = 5)
+    password_entry = tk.Entry(login_window, show="*")
+    password_entry.pack()
+
+    def attempt_login():
+        username = username_entry.get()
+        password = password_entry.get()
+        if username == USERNAME and password == PASSWORD:
+            login_window.destroy()
+            open_bank_app()
+        else:
+            messagebox.showerror("Login Failed")
+
+    tk.Button(login_window, text = "Login", command = attempt_login).pack(pady=20)
+    login_window.mainloop() 
+
+                                   
