@@ -12,7 +12,7 @@ class BankApp:
         self.history = []
 
         root.title("Mini Bank Account")
-        root.geometry("350x300")
+        root.geometry("600x500")
 
         self.balance_label = tk.Label(root, text=f"Balance: ₱{self.balance}", font = ("Avenir", 14))
         self.balance_label.pack(pady = 10)
@@ -31,3 +31,9 @@ class BankApp:
 
         self.history_box = tk.Text(root, height = 6, width = 40)
         self.history_box.pack()
+
+    def deposit(self):
+        amount = self.get_amount()
+        if amount:
+            self.balance += amount
+            self.update_display(f"Deposited ₱{amount}")    
