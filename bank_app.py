@@ -87,6 +87,13 @@ def show_login():
             messagebox.showerror("Login Failed")
 
     tk.Button(login_window, text = "Login", command = attempt_login).pack(pady=20)
-    login_window.mainloop() 
+    login_window.mainloop()
 
-                                   
+    # open main Bank GUI
+def open_bank_app():
+    main_window = tk.Tk()
+    app = BankApp(main_window)
+    main_window.mainloop()
+
+# start the login first
+show_login() 
