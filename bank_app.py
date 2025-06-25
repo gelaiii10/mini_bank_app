@@ -45,4 +45,14 @@ class BankApp:
                 self.balance -= amount
                 self.update_display(f"Withdrew ₱{amount}")
             else:
-                messagebox.showwarning("Insufficient Funds")            
+                messagebox.showwarning("Insufficient Funds")   
+
+    def get_amount(self):
+        try:
+            amount = float(self.amount_entry.get())
+            if amount <= 0:
+                raise ValueError
+            return amount
+        except ValueError:
+            messagebox.showerror("Invalid Input")
+            return None                     
